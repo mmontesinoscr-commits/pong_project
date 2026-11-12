@@ -11,7 +11,7 @@ public class Paddle {
     private final Rectangle2D.Double paddle;
     private double x;
     private final double y = 450;
-    private final double speed = 15.0;
+    private final double speed = 6.0;
 
     public Paddle() {
         super();

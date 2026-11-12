@@ -6,6 +6,7 @@ public class BallRunner {
     private static final int DEFAULT_WIDTH = 640;
     private static final int DEFAULT_HEIGHT = 480;
 
+
     private final Ellipse2D.Double ball;
     private final Paddle paddle;
 
@@ -64,7 +65,6 @@ public class BallRunner {
         x += velocityX;
         y += velocityY;
 
-        // 1. Colisión con los límites laterales (rebote exacto considerando el tamaño)
         if (x <= 0) {
             x = 0;
             velocityX = Math.abs(velocityX); // Asegura dirección positiva, evitando inversiones múltiples
@@ -72,8 +72,7 @@ public class BallRunner {
             x = panelWidth - ballDiameter;
             velocityX = -Math.abs(velocityX); // Asegura dirección negativa
         }
-
-        // 2. Colisión con el límite superior
+// 2. Colisión con el límite superior
         if (y <= 0) {
             y = 0;
             velocityY = Math.abs(velocityY);
@@ -84,14 +83,14 @@ public class BallRunner {
             // Reposicionar la pelota justo encima de la paleta para evitar que se atore o la atraviese
             y = paddle.getPaddle().getY() - ballDiameter;
             velocityY = -Math.abs(velocityY); // Invierte la velocidad hacia arriba garantizando el rebote
-            score++; // Bonus: sumar puntos por cada rebote exitoso
+            score++;
         }
 
-        // 4. Definición explícita de la pelota perdida (supera el límite inferior del tablero)
+
         if (y + ballDiameter >= panelHeight) {
-            // Condición de pelota perdida / Game Over o reinicio de ronda
+
             resetBall();
-            velocityY = -Math.abs(velocityY); // Lanzar hacia arriba de nuevo
+            velocityY = -Math.abs(velocityY);
         }
 
         syncBallShape();
