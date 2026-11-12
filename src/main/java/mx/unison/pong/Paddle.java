@@ -36,7 +36,6 @@ public class Paddle {
         }
         paddle.x = x;
     }
-
     public Rectangle2D.Double getPaddle() {
         return paddle;
     }
