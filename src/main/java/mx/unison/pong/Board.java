@@ -25,11 +25,11 @@ public class Board extends JComponent implements KeyListener {
         paddle = new Paddle();
         ballRunner = new BallRunner(ball, paddle);
 
-        // Timer de Swing configurado a ~60 FPS (16ms) ejecutándose en el EDT
+        // Timer Swing de 16ms
         gameTimer = new Timer(16, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ballRunner.update();
+                ballRunner.update(getWidth(), getHeight());
                 repaint();
             }
         });
@@ -90,7 +90,7 @@ public class Board extends JComponent implements KeyListener {
                 break;
             case KeyEvent.VK_RIGHT:
                 if (ballRunner.getState() == GameState.RUNNING) {
-                    paddle.moveRight();
+                    paddle.moveRight(getWidth());
                 }
                 break;
             case KeyEvent.VK_SPACE:
@@ -112,5 +112,4 @@ public class Board extends JComponent implements KeyListener {
         ballRunner.setState(GameState.STOPPED);
     }
 }
-
 
