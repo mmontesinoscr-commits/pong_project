@@ -2,7 +2,7 @@ package mx.unison.pong;
 
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
-
+//
 public class Paddle {
     public static final int WIDTH = 80;
     public static final int HEIGHT = 30;
@@ -36,6 +36,7 @@ public class Paddle {
         }
         paddle.x = x;
     }
+
     public Rectangle2D.Double getPaddle() {
         return paddle;
     }
@@ -43,4 +44,5 @@ public class Paddle {
     public boolean intersects(RectangularShape shape) {
         return paddle.intersects(shape.getBounds2D());
     }
+
 }
